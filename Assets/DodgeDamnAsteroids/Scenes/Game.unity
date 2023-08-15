@@ -401,7 +401,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  maxX: 2.25
+  maxX: 2.2
+  minY: -4.4
+  maxY: 3.8
 --- !u!1 &811149522
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +833,14 @@ PrefabInstance:
     - target: {fileID: 4465292311815553552, guid: 45d302a41bcf26d4c93eef955a8bb9cb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014066385079218324, guid: 45d302a41bcf26d4c93eef955a8bb9cb, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5014066385079218324, guid: 45d302a41bcf26d4c93eef955a8bb9cb, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1920
       objectReference: {fileID: 0}
     - target: {fileID: 6633865371781183252, guid: 45d302a41bcf26d4c93eef955a8bb9cb, type: 3}
       propertyPath: m_Name
