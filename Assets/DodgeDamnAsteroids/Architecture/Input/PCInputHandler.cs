@@ -11,8 +11,4 @@ public class PCInputHandler : InputHandlerBase
     {
         return Input.GetAxis("Vertical");
     }
-    public override Vector3 Shoot()
-    {
-        throw new System.NotImplementedException();
-    }
 }

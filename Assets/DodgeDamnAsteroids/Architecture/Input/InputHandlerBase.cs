@@ -12,5 +12,4 @@ public abstract class InputHandlerBase
 
     public abstract float HorizontalSpeed();
     public abstract float VerticalSpeed();
-    public abstract Vector3 Shoot();
 }
