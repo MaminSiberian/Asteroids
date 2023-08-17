@@ -5,7 +5,7 @@ public class PlayerFuel : MonoBehaviour
     [SerializeField] private float fuelConsumptionPerSecond;
     [SerializeField] private int fuelInCanister;
 
-    public static float fuelValue;
+    public static float fuelValue { get; private set; }
     private int maxFuelValue = 100;
     private Player player;
 
