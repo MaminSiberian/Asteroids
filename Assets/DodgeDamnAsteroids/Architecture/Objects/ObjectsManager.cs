@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectsManager : MonoBehaviour
 {
-    [SerializeField] private float obstaclesSpeed;
-    public static float _obstaclesSpeed { get; private set; }
+    [SerializeField] private float _obstaclesSpeed;
+    public static float obstaclesSpeed { get; private set; }
 
     private void Awake()
     {
-        _obstaclesSpeed = obstaclesSpeed;
+        obstaclesSpeed = _obstaclesSpeed;
     }
 }

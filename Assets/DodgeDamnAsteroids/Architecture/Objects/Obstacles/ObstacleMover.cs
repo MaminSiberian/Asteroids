@@ -6,7 +6,7 @@ public class ObstacleMover : MonoBehaviour
 
     private void Start()
     {
-        speed = ObjectsManager._obstaclesSpeed;
+        speed = ObjectsManager.obstaclesSpeed;
     }
     private void Update()
     {
