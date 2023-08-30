@@ -8,6 +8,7 @@ public class PlayerFuel : MonoBehaviour
     public static float fuelValue { get; private set; }
     private int maxFuelValue = 100;
     private Player player;
+    private string canisterTag = PoolManager.canisterTag;
 
     private void Awake()
     {
@@ -36,7 +37,7 @@ public class PlayerFuel : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Canister"))
+        if (collision.CompareTag(canisterTag))
         {
             GetCanister();
         }

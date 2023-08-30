@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 2265864316914059407}
   - component: {fileID: 5647070039370269326}
   - component: {fileID: 4016753141708824653}
-  - component: {fileID: 5053886044728684580}
-  - component: {fileID: 5991911008617210518}
+  - component: {fileID: -6475749764311437889}
   m_Layer: 0
   m_Name: Canister
   m_TagString: Canister
@@ -132,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.051388, y: 6.4398384}
   m_EdgeRadius: 0
---- !u!114 &5053886044728684580
+--- !u!114 &-6475749764311437889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,18 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1884691724712650117}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7347f0ea963dc419fe6cadb4c8d9d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e1033e5bc9305349bbde61b9b7861ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5991911008617210518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1884691724712650117}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cee4b3c5fc4aa742a84d68ecc08486d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  minRotationSpeed: 0.1
+  maxRotationSpeed: 0.8

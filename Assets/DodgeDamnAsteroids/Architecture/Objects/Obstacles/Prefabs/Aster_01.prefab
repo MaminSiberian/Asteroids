@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 7925663539215019183}
   - component: {fileID: 3577564701057615652}
   - component: {fileID: 5446070425535487134}
-  - component: {fileID: 4570178087117700344}
-  - component: {fileID: 7673682346737948788}
+  - component: {fileID: -1783230117076629315}
   m_Layer: 0
   m_Name: Aster_01
   m_TagString: Asteroid
@@ -29,11 +28,11 @@ Transform:
   m_GameObject: {fileID: 165963430092861357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3577564701057615652
 SpriteRenderer:
@@ -132,7 +131,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5625, y: 1.3125}
   m_EdgeRadius: 0
---- !u!114 &4570178087117700344
+--- !u!114 &-1783230117076629315
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,18 +140,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 165963430092861357}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cee4b3c5fc4aa742a84d68ecc08486d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e9661b4de0fd7f4bb3d39e1854d9d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7673682346737948788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 165963430092861357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7347f0ea963dc419fe6cadb4c8d9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  minRotationSpeed: 1
+  maxRotationSpeed: 5

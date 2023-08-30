@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] private int startHealthValue = 3;
-    [SerializeField] private int maxHealthValue = 6;
-    public static int healthValue;
+    [SerializeField] private int _startHealthValue = 3;
+    [SerializeField] private int _maxHealthValue = 6;
+    public static int startHealthValue { get; private set; }
+    public static int maxHealthValue { get; private set; }
+    public static int healthValue { get; private set; }
 
     private Player player;
+    private string heartTag = PoolManager.heartTag;
+    private string asterTag = PoolManager.asterTag;
+
     private void Awake()
     {
         player = GetComponent<Player>();
+        startHealthValue = _startHealthValue;
+        maxHealthValue = _maxHealthValue;
         healthValue = startHealthValue;
     }
     public void IncreaseHealth()
@@ -29,11 +36,11 @@ public class PlayerHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Heart"))
+        if (collision.CompareTag(heartTag))
         {
             IncreaseHealth();
         }
-        if (collision.CompareTag("Asteroid"))
+        if (collision.CompareTag(asterTag))
         {
             DecreaseHealth();
         }

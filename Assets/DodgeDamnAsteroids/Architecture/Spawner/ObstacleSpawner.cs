@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class ObjectSpawner : MonoBehaviour
+public class ObstacleSpawner : MonoBehaviour
 {
-    [SerializeField] private float spawnRate;
+    [SerializeField] private float timeBtwSpawn;
     [SerializeField] private List<Transform> _spawnPositions = new List<Transform>(4);
-    public static List<Transform> spawnPositions;
+    public static List<Transform> spawnPositions { get; private set; }
     [Header("Asteroids")]
     [SerializeField] private int asterStartSpawnChance;
     [SerializeField] private float asterSpawnIncreaseStep;
@@ -20,10 +20,10 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] private int heartStartSpawnChance;
     [SerializeField] private float heartSpawnIncreaseStep;
 
-    private string asterTag = "Asteroid";
-    private string canisterTag = "Canister";
-    private string extingTag = "Exting";
-    private string heartTag = "Heart";
+    private string asterTag;
+    private string canisterTag;
+    private string extingTag;
+    private string heartTag;
 
     private float asterSpawnChance; 
     private float canisterSpawnChance;
@@ -32,15 +32,20 @@ public class ObjectSpawner : MonoBehaviour
 
     private float timer = 0f;
     private int maxSpawnChance = 90;
-    private int criticHealthValue = 3;
 
     private void Awake()
     {
         spawnPositions = _spawnPositions;
+
         asterSpawnChance = asterStartSpawnChance;
         canisterSpawnChance = canisterStartSpawnChance;
         extingSpawnChance = extingStartSpawnChance;
         heartSpawnChance = heartStartSpawnChance;
+
+        asterTag = PoolManager.asterTag;
+        canisterTag = PoolManager.canisterTag;
+        extingTag = PoolManager.extingTag;
+        heartTag = PoolManager.heartTag;
     }
     private void Update()
     {
@@ -48,10 +53,10 @@ public class ObjectSpawner : MonoBehaviour
     }
     private void SetSpawnTimer()
     {
-        if (timer >= spawnRate)
+        if (timer >= timeBtwSpawn)
         {
             SpawnRandomObjects();
-            timer -= spawnRate;
+            timer -= timeBtwSpawn;
         }
         else
             timer += Time.deltaTime;
@@ -68,7 +73,7 @@ public class ObjectSpawner : MonoBehaviour
             SpawnCanister();
             return;
         }
-        if (PlayerHealth.healthValue < criticHealthValue && Random.Range(0, 100) <= heartSpawnChance)
+        if (PlayerHealth.healthValue < PlayerHealth.maxHealthValue && Random.Range(0, 100) <= heartSpawnChance)
         {
             SpawnHeart();
             return;
@@ -79,7 +84,7 @@ public class ObjectSpawner : MonoBehaviour
             return;
         }
     }
-    private Object SpawnObject(string tag, Transform pos)
+    private PoolableObject SpawnObject(string tag, Transform pos)
     {
         var obj = PoolManager.GetObject(tag);
         obj.transform.position = pos.position;
@@ -100,7 +105,7 @@ public class ObjectSpawner : MonoBehaviour
 
         if (extingSpawnChance <= maxSpawnChance && PlayerFire.isOnFire) 
             extingSpawnChance += extingSpawnIncreaseStep;
-        if (heartSpawnChance <= maxSpawnChance && PlayerHealth.healthValue < criticHealthValue) 
+        if (heartSpawnChance <= maxSpawnChance && PlayerHealth.healthValue < PlayerHealth.startHealthValue) 
             heartSpawnChance += heartSpawnIncreaseStep;
     }
     private void SpawnAsteroids()

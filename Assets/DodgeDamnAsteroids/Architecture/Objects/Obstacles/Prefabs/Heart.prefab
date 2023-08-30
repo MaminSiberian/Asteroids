@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 1988764025946164591}
   - component: {fileID: 8640935443564771311}
   - component: {fileID: 2987347215798634009}
-  - component: {fileID: 5505335242390962919}
-  - component: {fileID: 8601156792866808651}
+  - component: {fileID: -3340039568102020605}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Heart
@@ -122,7 +121,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4.6
---- !u!114 &5505335242390962919
+--- !u!114 &-3340039568102020605
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,18 +130,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8606760968872993184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7347f0ea963dc419fe6cadb4c8d9d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8601156792866808651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8606760968872993184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cee4b3c5fc4aa742a84d68ecc08486d, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e1033e5bc9305349bbde61b9b7861ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

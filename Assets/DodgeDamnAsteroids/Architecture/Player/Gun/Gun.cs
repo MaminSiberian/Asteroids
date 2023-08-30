@@ -1,18 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float force;
+    private int forceMultiplier = 50;
 
-    // Update is called once per frame
-    void Update()
+    public Bomb Shoot()
     {
-        
+        var obj = PoolManager.GetObject("Bomb");
+        obj.transform.position = this.transform.position;
+        obj.GetComponent<Rigidbody2D>().AddForce(Vector2.up * force * forceMultiplier);
+
+        return (Bomb)obj;
     }
 }

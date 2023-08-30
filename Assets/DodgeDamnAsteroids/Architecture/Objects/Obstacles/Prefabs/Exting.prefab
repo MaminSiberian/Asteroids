@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 5016283577799384951}
   - component: {fileID: 313262928473959074}
   - component: {fileID: 7951830309327129121}
-  - component: {fileID: 7343633946885747070}
-  - component: {fileID: 3914609303831856448}
+  - component: {fileID: -5503297153833256092}
   m_Layer: 0
   m_Name: Exting
   m_TagString: Exting
@@ -122,7 +121,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.14575969}
   m_Size: {x: 1.07, y: 1.3384801}
   m_Direction: 0
---- !u!114 &7343633946885747070
+--- !u!114 &-5503297153833256092
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,18 +130,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8011970820251154020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b7347f0ea963dc419fe6cadb4c8d9d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e1033e5bc9305349bbde61b9b7861ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3914609303831856448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8011970820251154020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cee4b3c5fc4aa742a84d68ecc08486d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  minRotationSpeed: 0.1
+  maxRotationSpeed: 0.8

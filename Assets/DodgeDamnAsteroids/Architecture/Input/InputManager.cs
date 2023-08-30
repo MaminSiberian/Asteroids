@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
     public static InputType inputType { get; private set; }
 
     private InputHandlerBase inputHandler;
+    private Gun gun;
     public static float horizontalSpeed { get; private set; }
     public static float verticalSpeed { get; private set; }
 
@@ -23,6 +24,7 @@ public class InputManager : MonoBehaviour
         cam = _cam;
         inputType = _inputType;
         SetInputType();
+        gun = FindAnyObjectByType<Gun>();
     }
 
     private void SetInputType()
@@ -41,5 +43,10 @@ public class InputManager : MonoBehaviour
     {
         horizontalSpeed = inputHandler.HorizontalSpeed();
         verticalSpeed = inputHandler.VerticalSpeed();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            gun.Shoot();
+        }
     }
 }

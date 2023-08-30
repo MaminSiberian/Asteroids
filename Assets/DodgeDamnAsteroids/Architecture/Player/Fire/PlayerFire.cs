@@ -9,6 +9,8 @@ public class PlayerFire : MonoBehaviour
     public static float fireValue { get; private set; }
     private int maxFireValue = 100;
     private Player player;
+    private string extingTag = PoolManager.extingTag;
+    private string asterTag = PoolManager.asterTag;
 
     private void Awake()
     {
@@ -41,11 +43,11 @@ public class PlayerFire : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Exting"))
+        if (collision.CompareTag(extingTag))
         {
             Extinguish();
         }
-        if (collision.CompareTag("Asteroid"))
+        if (collision.CompareTag(asterTag))
         {
             isOnFire = true;
         }
