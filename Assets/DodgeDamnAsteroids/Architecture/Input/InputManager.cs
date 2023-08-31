@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public enum InputType
@@ -14,8 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private InputType _inputType;
     public static InputType inputType { get; private set; }
 
-    private InputHandlerBase inputHandler;
-    private Gun gun;
+    private IInputHandler inputHandler;
     public static float horizontalSpeed { get; private set; }
     public static float verticalSpeed { get; private set; }
 
@@ -24,7 +24,6 @@ public class InputManager : MonoBehaviour
         cam = _cam;
         inputType = _inputType;
         SetInputType();
-        gun = FindAnyObjectByType<Gun>();
     }
 
     private void SetInputType()
@@ -32,10 +31,10 @@ public class InputManager : MonoBehaviour
         switch (inputType)
         {
             case InputType.PC:
-                inputHandler = new PCInputHandler();
+                inputHandler = this.AddComponent<PCInputHandler>();
                 break;
             case InputType.Android:
-                //inputHandler = new AndroidInputHandler();
+                inputHandler = this.AddComponent<AndroidInputHandler>();
                 break;
         }
     }
@@ -43,10 +42,5 @@ public class InputManager : MonoBehaviour
     {
         horizontalSpeed = inputHandler.HorizontalSpeed();
         verticalSpeed = inputHandler.VerticalSpeed();
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            gun.Shoot();
-        }
     }
 }

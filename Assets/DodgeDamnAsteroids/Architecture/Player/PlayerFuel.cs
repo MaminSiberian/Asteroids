@@ -8,7 +8,7 @@ public class PlayerFuel : MonoBehaviour
     public static float fuelValue { get; private set; }
     private int maxFuelValue = 100;
     private Player player;
-    private string canisterTag = PoolManager.canisterTag;
+    private string canisterTag = TagStorage.canisterTag;
 
     private void Awake()
     {

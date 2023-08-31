@@ -9,8 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public static int healthValue { get; private set; }
 
     private Player player;
-    private string heartTag = PoolManager.heartTag;
-    private string asterTag = PoolManager.asterTag;
+    private string heartTag = TagStorage.heartTag;
+    private string asterTag = TagStorage.asterTag;
 
     private void Awake()
     {

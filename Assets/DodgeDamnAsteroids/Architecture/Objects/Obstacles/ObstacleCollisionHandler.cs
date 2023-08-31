@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ObstacleCollisionHandler : MonoBehaviour
 {
-    private string playerTag = Player.playerTag;
+    private string playerTag = TagStorage.playerTag;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

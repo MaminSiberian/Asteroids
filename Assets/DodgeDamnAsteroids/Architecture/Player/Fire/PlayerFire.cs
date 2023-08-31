@@ -9,8 +9,8 @@ public class PlayerFire : MonoBehaviour
     public static float fireValue { get; private set; }
     private int maxFireValue = 100;
     private Player player;
-    private string extingTag = PoolManager.extingTag;
-    private string asterTag = PoolManager.asterTag;
+    private string extingTag = TagStorage.extingTag;
+    private string asterTag = TagStorage.asterTag;
 
     private void Awake()
     {

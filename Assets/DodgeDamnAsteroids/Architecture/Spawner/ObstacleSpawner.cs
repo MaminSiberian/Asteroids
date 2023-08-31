@@ -42,10 +42,10 @@ public class ObstacleSpawner : MonoBehaviour
         extingSpawnChance = extingStartSpawnChance;
         heartSpawnChance = heartStartSpawnChance;
 
-        asterTag = PoolManager.asterTag;
-        canisterTag = PoolManager.canisterTag;
-        extingTag = PoolManager.extingTag;
-        heartTag = PoolManager.heartTag;
+        asterTag = TagStorage.asterTag;
+        canisterTag = TagStorage.canisterTag;
+        extingTag = TagStorage.extingTag;
+        heartTag = TagStorage.heartTag;
     }
     private void Update()
     {
