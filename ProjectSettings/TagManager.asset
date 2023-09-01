@@ -9,6 +9,8 @@ TagManager:
   - Exting
   - Heart
   - Bomb
+  - UFO
+  - UFOProjectile
   layers:
   - Default
   - TransparentFX
