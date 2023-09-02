@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2390304266062903353
 SpriteRenderer:
@@ -143,7 +143,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -161,5 +161,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2342f43fa57a33449bfd989b685381f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileForce: 2
-  reloadTime: 3
+  health: 3
+  projectileForce: 4
+  minReloadTime: 1
+  maxReloadTime: 3
+  moveSpeed: 5
+  minYpos: 1.5
+  maxYpos: 4
+  maxXpos: 1.5

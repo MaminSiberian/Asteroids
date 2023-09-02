@@ -196,11 +196,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 419527426187888276, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.28874266
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 419527426187888276, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.1214225
+      value: 1.36
       objectReference: {fileID: 0}
     - target: {fileID: 419527426187888276, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -237,14 +237,6 @@ PrefabInstance:
     - target: {fileID: 3437721860773664407, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
       propertyPath: m_Name
       value: UFO
-      objectReference: {fileID: 0}
-    - target: {fileID: 7504279046584717177, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
-      propertyPath: reloadTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7504279046584717177, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
-      propertyPath: projectileForce
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

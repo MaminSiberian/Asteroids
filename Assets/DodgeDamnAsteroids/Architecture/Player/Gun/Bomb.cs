@@ -5,6 +5,7 @@ public class Bomb : PoolableObject
     [SerializeField] private float minRotationSpeed;
     [SerializeField] private float maxRotationSpeed;
     private string asterTag = TagStorage.asterTag;
+    private string UFOTag = TagStorage.UFOTag;
     private Rotator rotator;
 
     private void Awake()
@@ -17,9 +18,8 @@ public class Bomb : PoolableObject
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag(asterTag))
+        if (collision.CompareTag(asterTag) || collision.CompareTag(UFOTag))
         {
-            collision.GetComponent<Asteroid>().BlowUp();
             this.gameObject.SetActive(false);
         }
     }

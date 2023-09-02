@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     private Player player;
     private string heartTag = TagStorage.heartTag;
     private string asterTag = TagStorage.asterTag;
+    private string projectileTag = TagStorage.UFOProjectileTag;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
         {
             IncreaseHealth();
         }
-        if (collision.CompareTag(asterTag))
+        if (collision.CompareTag(asterTag) || collision.CompareTag(projectileTag))
         {
             DecreaseHealth();
         }
