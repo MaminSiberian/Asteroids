@@ -165,7 +165,7 @@ MonoBehaviour:
   projectileForce: 4
   minReloadTime: 1
   maxReloadTime: 3
-  moveSpeed: 5
+  moveSpeed: 10
   minYpos: 1.5
   maxYpos: 4
   maxXpos: 1.5

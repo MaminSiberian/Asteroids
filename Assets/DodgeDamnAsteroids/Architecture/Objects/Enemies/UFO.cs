@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class UFO : PoolableObject
 {
-    [SerializeField] private int health = 3;
+    [SerializeField] private int startHealth = 3;
     [Space]
     [SerializeField] private float projectileForce;
     [SerializeField] private float minReloadTime;
@@ -15,6 +15,7 @@ public class UFO : PoolableObject
 
     private Player player;
     private Vector3 targetPos;
+    private int health;
     private string projectileTag = TagStorage.UFOProjectileTag;
     private bool isLoaded = false;
     private float timer = 0f;
@@ -27,13 +28,15 @@ public class UFO : PoolableObject
     private void OnEnable()
     {
         player = FindAnyObjectByType<Player>();
+        health = startHealth;
         SetReloadTime();
         SetTargetPos();
     }
     protected override void Update()
     {
         base.Update();
-        
+        if (player == null) return;
+
         if (isLoaded)
         {
             Shoot();

@@ -20,10 +20,10 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int heartStartSpawnChance;
     [SerializeField] private float heartSpawnIncreaseStep;
 
-    private string asterTag;
-    private string canisterTag;
-    private string extingTag;
-    private string heartTag;
+    private string asterTag = TagStorage.asterTag;
+    private string canisterTag = TagStorage.canisterTag;
+    private string extingTag = TagStorage.extingTag;
+    private string heartTag = TagStorage.heartTag;
 
     private float asterSpawnChance; 
     private float canisterSpawnChance;
@@ -41,11 +41,6 @@ public class ObstacleSpawner : MonoBehaviour
         canisterSpawnChance = canisterStartSpawnChance;
         extingSpawnChance = extingStartSpawnChance;
         heartSpawnChance = heartStartSpawnChance;
-
-        asterTag = TagStorage.asterTag;
-        canisterTag = TagStorage.canisterTag;
-        extingTag = TagStorage.extingTag;
-        heartTag = TagStorage.heartTag;
     }
     private void Update()
     {
