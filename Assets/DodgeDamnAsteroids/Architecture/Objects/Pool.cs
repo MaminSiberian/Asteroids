@@ -8,7 +8,7 @@ public class Pool<T> where T : MonoBehaviour
 
     private List<T> pool;
 
-    public Pool(List<T> prefabs, int poolLenght)
+    public Pool(List<T> prefabs, int poolLenght, Transform poolGO = null)
     {
         this.prefabs = prefabs;
         pool = new List<T>();
@@ -17,7 +17,10 @@ public class Pool<T> where T : MonoBehaviour
         {
             for (int i = 0; i < poolLenght; i++)
             {
-                CreateObject(prefab);
+                var obj = CreateObject(prefab);
+
+                if (poolGO != null)
+                    obj.transform.SetParent(poolGO);
             }
         }
     }
