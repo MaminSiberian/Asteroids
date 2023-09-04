@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PCInputHandler : MonoBehaviour, IInputHandler
 {
-    private Gun gun;
+    private Gameplay.Gun gun;
 
     private void Awake()
     {
-        gun = FindAnyObjectByType<Gun>();
+        gun = FindAnyObjectByType<Gameplay.Gun>();
     }
     private void Update()
     {

@@ -15,7 +15,7 @@ public class TestText : MonoBehaviour
     }
     private void ShowInfo()
     {
-        text.text = $"Heath: {PlayerHealth.healthValue}, Fuel: {(int) PlayerFuel.fuelValue}, " +
-            $"IsOnFire: {PlayerFire.isOnFire}, FireLevel: {PlayerFire.fireValue}, Ammo: {Gun.ammo}, Reloading: {Gun.reloadProgress}";
+        text.text = $"Fuel: {(int) PlayerFuel.fuelValue}, " +
+            $"IsOnFire: {PlayerFire.isOnFire}, FireLevel: {PlayerFire.fireValue}, Ammo: {Gameplay.Gun.ammo}, Reloading: {Gameplay.Gun.reloadProgress}";
     }
 }

@@ -68,7 +68,7 @@ public class ObstacleSpawner : MonoBehaviour
             SpawnCanister();
             return;
         }
-        if (PlayerHealth.healthValue < PlayerHealth.maxHealthValue && Random.Range(0, 100) <= heartSpawnChance)
+        if (Random.Range(0, 100) <= heartSpawnChance && Gameplay.Health.healthValue < Gameplay.Health.maxHealthValue)
         {
             SpawnHeart();
             return;
@@ -100,7 +100,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (extingSpawnChance <= maxSpawnChance && PlayerFire.isOnFire) 
             extingSpawnChance += extingSpawnIncreaseStep;
-        if (heartSpawnChance <= maxSpawnChance && PlayerHealth.healthValue < PlayerHealth.startHealthValue) 
+        if (heartSpawnChance <= maxSpawnChance) 
             heartSpawnChance += heartSpawnIncreaseStep;
     }
     private void SpawnAsteroids()
