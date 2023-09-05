@@ -11,6 +11,8 @@ namespace UI
 
         private int maxAmmo;
         private int ammo;
+        private string burningAnimName = "Burning";
+        private string idleAnimName = "Idle";
 
         private void Start()
         {
@@ -39,11 +41,16 @@ namespace UI
             for (int i = 0; i < bombs.Count; i++)
             {
                 bombs[i].enabled = i < ammo;
-                bombs.ForEach(b => b.fillAmount = 1);
+                if (i < ammo)
+                {
+                    bombs[i].fillAmount = 1;
+                    bombs[i].GetComponent<Animator>().Play(burningAnimName);
+                }
             }
         }
         private void ShowReloading()
         {
+            bombs[maxAmmo - 1].GetComponent<Animator>().Play(idleAnimName);
             bombs[maxAmmo - 1].fillAmount = Gameplay.Gun.reloadProgress;
         }
     }
