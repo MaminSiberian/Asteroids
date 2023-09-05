@@ -39,7 +39,7 @@ namespace UI
 
             for (int i = 0; i < bombs.Count; i++)
             {
-                bombs[i].enabled = i < ammo;
+                bombs[i].enabled = i <= ammo;
                 if (i < ammo)
                 {
                     bombs[i].fillAmount = 1;
@@ -49,8 +49,8 @@ namespace UI
         }
         private void ShowReloading()
         {
-            bombs[maxAmmo - 1].GetComponent<Animator>().Play(idleAnimName);
-            bombs[maxAmmo - 1].fillAmount = Gameplay.Gun.reloadProgress;
+            bombs[ammo].GetComponent<Animator>().Play(idleAnimName);
+            bombs[ammo].fillAmount = Gameplay.Gun.reloadProgress;
         }
     }
 }

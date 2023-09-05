@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Gameplay
@@ -8,6 +9,7 @@ namespace Gameplay
         [SerializeField] private int fuelInCanister;
 
         public static float fuelValue { get; private set; }
+        public static event Action OnGetCanisterEvent;
         private int maxFuelValue = 100;
         private Player player;
         private string canisterTag = TagStorage.canisterTag;
@@ -36,6 +38,7 @@ namespace Gameplay
         public void GetCanister()
         {
             fuelValue += fuelInCanister;
+            OnGetCanisterEvent?.Invoke();
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
