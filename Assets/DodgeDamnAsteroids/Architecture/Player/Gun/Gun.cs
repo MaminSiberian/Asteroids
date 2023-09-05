@@ -4,19 +4,21 @@ namespace Gameplay
 {
     public class Gun : MonoBehaviour
     {
-        [SerializeField] private int maxAmmo;
+        [SerializeField] private int _maxAmmo;
         [SerializeField] private float force;
         [SerializeField] private float reloadTime;
 
         public static int ammo { get; private set; }
+        public static int maxAmmo { get; private set; }
         public static float reloadProgress;
 
         private int forceMultiplier = 50;
         private string bombTag = TagStorage.bombTag;
         private float timer = 0f;
 
-        private void Start()
+        private void Awake()
         {
+            maxAmmo = _maxAmmo;
             ammo = maxAmmo;
         }
         private void Update()

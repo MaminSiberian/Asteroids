@@ -6221,7 +6221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b5f2f0de8363e419f1ec3234aeff5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAmmo: 6
+  _maxAmmo: 0
   force: 7
   reloadTime: 1.5
 --- !u!1 &1522308153
