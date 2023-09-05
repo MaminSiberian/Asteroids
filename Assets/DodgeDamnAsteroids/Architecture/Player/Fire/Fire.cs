@@ -8,7 +8,7 @@ namespace Gameplay
         [SerializeField] private float fireDecreaseByExtinguish;
 
         public static bool isOnFire { get; private set; }
-        public static float fireValue { get; private set; }
+        public static float fireLevel { get; private set; }
         private int maxFireValue = 100;
         private Player player;
         private string extingTag = TagStorage.extingTag;
@@ -17,18 +17,18 @@ namespace Gameplay
         private void Awake()
         {
             player = GetComponent<Player>();
-            fireValue = 1;
+            fireLevel = 1;
         }
         private void Update()
         {
-            if (fireValue <= 0)
+            if (fireLevel <= 0)
             {
-                fireValue = 1;
+                fireLevel = 1;
                 isOnFire = false;
             }
-            if (fireValue >= maxFireValue)
+            if (fireLevel >= maxFireValue)
             {
-                fireValue = maxFireValue;
+                fireLevel = maxFireValue;
                 isOnFire = false;
                 player.KillPlayer();
             }
@@ -37,11 +37,11 @@ namespace Gameplay
         }
         public void BurnPlayer()
         {
-            fireValue += fireIncreasePerSecond * Time.deltaTime;
+            fireLevel += fireIncreasePerSecond * Time.deltaTime;
         }
         private void Extinguish()
         {
-            fireValue -= fireDecreaseByExtinguish;
+            fireLevel -= fireDecreaseByExtinguish;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
