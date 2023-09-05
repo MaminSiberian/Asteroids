@@ -58,7 +58,7 @@ public class ObstacleSpawner : MonoBehaviour
     }
     private void SpawnRandomObjects()
     {
-        if (PlayerFire.isOnFire && Random.Range(0, 100) <= extingSpawnChance)
+        if (Gameplay.Fire.isOnFire && Random.Range(0, 100) <= extingSpawnChance)
         {
             SpawnExting();
             return;
@@ -98,7 +98,7 @@ public class ObstacleSpawner : MonoBehaviour
 
         if (canisterSpawnChance <= maxSpawnChance) canisterSpawnChance += canisterSpawnIncreaseStep;
 
-        if (extingSpawnChance <= maxSpawnChance && PlayerFire.isOnFire) 
+        if (extingSpawnChance <= maxSpawnChance && Gameplay.Fire.isOnFire) 
             extingSpawnChance += extingSpawnIncreaseStep;
         if (heartSpawnChance <= maxSpawnChance) 
             heartSpawnChance += heartSpawnIncreaseStep;
