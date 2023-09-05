@@ -5,7 +5,8 @@ namespace Gameplay
 {
     public class Fuel : MonoBehaviour
     {
-        [SerializeField] private float fuelConsumptionPerSecond;
+        [SerializeField] private float fuelConsumptionSpeed;
+        [SerializeField] private float refuelingSpeed;
         [SerializeField] private int fuelInCanister;
 
         public static float fuelValue { get; private set; }
@@ -13,6 +14,8 @@ namespace Gameplay
         private int maxFuelValue = 100;
         private Player player;
         private string canisterTag = TagStorage.canisterTag;
+        private bool isRefueling;
+        private float newFuelValue;
 
         private void Awake()
         {
@@ -29,16 +32,40 @@ namespace Gameplay
                 player.KillPlayer();
             }
 
+            if (isRefueling)
+            {
+                Refuel();
+                return;
+            }
+
             ConsumpFuel();
         }
         private void ConsumpFuel()
         {
-            fuelValue -= fuelConsumptionPerSecond * Time.deltaTime;
+            fuelValue -= fuelConsumptionSpeed * Time.deltaTime;
+        }
+        private void Refuel()
+        {
+            if (fuelValue >= newFuelValue)
+            {
+                isRefueling = false;
+                return;
+            }
+
+            fuelValue += refuelingSpeed * Time.deltaTime;
         }
         public void GetCanister()
         {
-            fuelValue += fuelInCanister;
             OnGetCanisterEvent?.Invoke();
+
+            if (isRefueling) 
+                newFuelValue += fuelInCanister;
+            else
+                newFuelValue = fuelValue + fuelInCanister;
+
+            if (newFuelValue > 100) newFuelValue = 100;
+
+            isRefueling = true;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {

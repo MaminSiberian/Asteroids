@@ -4,8 +4,9 @@ namespace Gameplay
 { 
     public class Fire : MonoBehaviour
     {
-        [SerializeField] private float fireIncreasePerSecond;
+        [SerializeField] private float fireIncreaseSpeed;
         [SerializeField] private float fireDecreaseByExtinguish;
+        [SerializeField] private float extingSpeed;
 
         public static bool isOnFire { get; private set; }
         public static float fireLevel { get; private set; }
@@ -13,6 +14,8 @@ namespace Gameplay
         private Player player;
         private string extingTag = TagStorage.extingTag;
         private string asterTag = TagStorage.asterTag;
+        private bool isExtinguishing;
+        private float newFireLevel;
 
         private void Awake()
         {
@@ -25,6 +28,7 @@ namespace Gameplay
             {
                 fireLevel = 1;
                 isOnFire = false;
+                isExtinguishing = false;
             }
             if (fireLevel >= maxFireValue)
             {
@@ -33,21 +37,44 @@ namespace Gameplay
                 player.KillPlayer();
             }
 
+            if (isExtinguishing)
+            {
+                Extinguish();
+                return;
+            }
+
             if (isOnFire) BurnPlayer();
         }
         public void BurnPlayer()
         {
-            fireLevel += fireIncreasePerSecond * Time.deltaTime;
+            fireLevel += fireIncreaseSpeed * Time.deltaTime;
+        }
+        private void GetExtinguisher()
+        {
+            if (isExtinguishing)
+                newFireLevel -= fireDecreaseByExtinguish;
+            else
+                newFireLevel = fireLevel - fireDecreaseByExtinguish;
+
+            if (newFireLevel < 0) newFireLevel = 0;
+
+            isExtinguishing = true;
         }
         private void Extinguish()
         {
-            fireLevel -= fireDecreaseByExtinguish;
+            if (fireLevel <= newFireLevel)
+            {
+                isExtinguishing = false;
+                return;
+            }
+
+            fireLevel -= extingSpeed * Time.deltaTime;
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag(extingTag))
             {
-                Extinguish();
+                GetExtinguisher();
             }
             if (collision.CompareTag(asterTag))
             {
