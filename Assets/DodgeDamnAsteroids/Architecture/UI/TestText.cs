@@ -15,6 +15,6 @@ public class TestText : MonoBehaviour
     }
     private void ShowInfo()
     {
-        text.text = $"IsOnFire: {Gameplay.Fire.isOnFire}, FireLevel: {Gameplay.Fire.fireLevel}";
+        text.text = $"CurrentScore: {(int)Gameplay.ScoreCounter.currentScore}";
     }
 }
