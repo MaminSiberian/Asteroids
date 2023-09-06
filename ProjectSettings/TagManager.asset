@@ -11,6 +11,8 @@ TagManager:
   - Bomb
   - UFO
   - UFOProjectile
+  - AsterDestruction
+  - Explosion
   layers:
   - Default
   - TransparentFX

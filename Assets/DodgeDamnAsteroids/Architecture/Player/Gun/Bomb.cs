@@ -6,6 +6,7 @@ public class Bomb : PoolableObject
     [SerializeField] private float maxRotationSpeed;
     private string asterTag = TagStorage.asterTag;
     private string UFOTag = TagStorage.UFOTag;
+    private string explosionTag = TagStorage.explosionTag;
     private Rotator rotator;
 
     private void Awake()
@@ -20,7 +21,14 @@ public class Bomb : PoolableObject
     {
         if (collision.CompareTag(asterTag) || collision.CompareTag(UFOTag))
         {
-            this.gameObject.SetActive(false);
+            BlowUp(collision.transform.position);
         }
+    }
+    private void BlowUp(Vector3 pos)
+    {
+        var obj = PoolManager.GetObject(explosionTag);
+        obj.transform.position = pos;
+
+        this.gameObject.SetActive(false);
     }
 }

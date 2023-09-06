@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class PoolableObject : MonoBehaviour
+public class PoolableObject : MonoBehaviour
 {
     protected float maxX = 3;
     protected float maxY = 8;
@@ -13,6 +13,10 @@ public abstract class PoolableObject : MonoBehaviour
     protected void CheckObjPosition()
     {
         if (Mathf.Abs(this.transform.position.x) >= maxX || Mathf.Abs(this.transform.position.y) >= maxY)
-            this.gameObject.SetActive(false);
+            TurnOffObject();
+    }
+    public void TurnOffObject()
+    {
+        this.gameObject.SetActive(false);
     }
 }

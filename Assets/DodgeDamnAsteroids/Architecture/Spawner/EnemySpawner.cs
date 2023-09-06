@@ -14,7 +14,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        Player.OnPlayerDeathEvent += OnPlayerDeath;
         SetTimeBtwSpawn();
+    }
+    private void OnDisable()
+    {
+        Player.OnPlayerDeathEvent -= OnPlayerDeath;
     }
     private void Update()
     {
@@ -53,5 +58,9 @@ public class EnemySpawner : MonoBehaviour
     private void SetTimeBtwSpawn()
     {
         timeBtwSpawn = Random.Range(minTimeBtwSpawn, maxTimeBtwSpawn);
+    }
+    private void OnPlayerDeath()
+    {
+        this.gameObject.SetActive(false);
     }
 }

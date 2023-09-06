@@ -7563,6 +7563,8 @@ MonoBehaviour:
   - {fileID: -572029343346184881, guid: 2e34bb9174ef96a4f8c06e9b3f1fc202, type: 3}
   - {fileID: 7504279046584717177, guid: 72db3eafaebec7c4296ac7654cba22e1, type: 3}
   - {fileID: -7677657303299471630, guid: 68a507b6f60074143beb1b228b94f899, type: 3}
+  - {fileID: 6629981492456454476, guid: 9f5bcad42fff57f4d9bbd94112f09d4f, type: 3}
+  - {fileID: -5290629719348901209, guid: 4d8cddf3a187d9f4683e5c871f942db5, type: 3}
   poolLenght: 5
   poolGO: {fileID: 144536351}
 --- !u!222 &11223032565171016

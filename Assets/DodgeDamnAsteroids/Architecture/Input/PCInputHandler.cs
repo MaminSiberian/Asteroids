@@ -12,6 +12,14 @@ public class PCInputHandler : MonoBehaviour, IInputHandler
     {
         gun = FindAnyObjectByType<Gameplay.Gun>();
     }
+    private void OnEnable()
+    {
+        Player.OnPlayerDeathEvent += OnPlayerDeath;
+    }
+    private void OnDisable()
+    {
+        Player.OnPlayerDeathEvent -= OnPlayerDeath;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(shootKey))
@@ -46,5 +54,9 @@ public class PCInputHandler : MonoBehaviour, IInputHandler
     {
         PauseMenu.UnpauseGame();
         isPaused = false;
+    }
+    private void OnPlayerDeath()
+    {
+        this.gameObject.SetActive(false);
     }
 }

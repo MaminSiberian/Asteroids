@@ -10,4 +10,6 @@ public static class TagStorage
     public static string bombTag => "Bomb";
     public static string UFOTag => "UFO";
     public static string UFOProjectileTag => "UFOProjectile";
+    public static string asterDestruction => "AsterDestruction";
+    public static string explosionTag => "Explosion";
 }
