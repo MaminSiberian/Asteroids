@@ -78,7 +78,8 @@ namespace Gameplay
             }
             if (collision.CompareTag(asterTag))
             {
-                isOnFire = true;
+                if (Gameplay.Health.healthValue > 1)
+                    isOnFire = true;
             }
         }
     }

@@ -838,6 +838,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startHealthValue: 3
   _maxHealthValue: 6
+  invincibilityTime: 2
+  sprite: {fileID: 685698090}
+  blinkRate: 0.4
 --- !u!1 &811149522
 GameObject:
   m_ObjectHideFlags: 0
