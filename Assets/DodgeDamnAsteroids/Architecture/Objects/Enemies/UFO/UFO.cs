@@ -12,22 +12,38 @@ public class UFO : PoolableObject
     [SerializeField] private float minYpos = 1.5f;
     [SerializeField] private float maxYpos = 4;
     [SerializeField] private float maxXpos = 1.5f;
-
+    [Space]
+    [SerializeField] private float blinkTime;
+    [SerializeField] private float blinkRate;
+    
+    private int health;
+    private float distance = 0.1f;
+    // tags
+    private string projectileTag = TagStorage.UFOProjectileTag;
+    private string bombTag = TagStorage.bombTag;
+    // shooting
     private Player player;
     private Vector3 targetPos;
-    private int health;
-    private string projectileTag = TagStorage.UFOProjectileTag;
-    private bool isLoaded = false;
-    private float timer = 0f;
     private int forceMultiplier = 50;
     private int speedMultiplier = 10;
+    // reloading
+    private bool isLoaded = false;
+    private float reloadTimer = 0f;
     private float reloadTime;
-    private string bombTag = TagStorage.bombTag;
-    private float distance = 0.1f;
+    // blinking
+    private bool isBlinking;
+    private SpriteRenderer sprite;
+    private float blinkTimeTimer = 0f;
+    private float blinkRateTimer = 0f;
+
 
     private void OnEnable()
     {
+        sprite = GetComponent<SpriteRenderer>();
+        sprite.enabled = true;
+
         player = FindAnyObjectByType<Player>();
+
         health = startHealth;
         SetReloadTime();
         SetTargetPos();
@@ -46,6 +62,14 @@ public class UFO : PoolableObject
             Reload();
 
         Move();
+
+        if (isBlinking)
+        {
+            SetBlinkTimer();
+            Blink();
+        }
+        else
+            sprite.enabled = true;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -54,14 +78,14 @@ public class UFO : PoolableObject
     }
     private void Reload()
     {
-        if (timer >= reloadTime)
+        if (reloadTimer >= reloadTime)
         {
             isLoaded = true;
-            timer -= reloadTime;
+            reloadTimer -= reloadTime;
             SetReloadTime();
         }
         else
-            timer += Time.deltaTime;
+            reloadTimer += Time.deltaTime;
     }
     private void Move()
     {
@@ -88,14 +112,41 @@ public class UFO : PoolableObject
     {
         health--;
 
-        if (health <= 0) KillUFO();
+        if (health >= 1)
+        {
+            blinkTimeTimer = 0;
+            isBlinking = true;
+        }
+        else
+            KillUFO();
     }
     private void KillUFO()
     {
+        isBlinking = false;
         this.gameObject.SetActive(false);
     }
     private void SetTargetPos()
     {
         targetPos = new Vector3(Random.Range(-maxXpos, maxXpos), Random.Range(minYpos, maxYpos), 0f);
+    }
+    private void SetBlinkTimer()
+    {
+        if (blinkTimeTimer >= blinkTime)
+        {
+            isBlinking = false;
+            blinkTimeTimer -= blinkTime;
+        }
+        else
+            blinkTimeTimer += Time.deltaTime;
+    }
+    private void Blink()
+    {
+        if (blinkRateTimer >= blinkRate)
+        {
+            sprite.enabled = !sprite.enabled;
+            blinkRateTimer -= blinkRate;
+        }
+        else
+            blinkRateTimer += Time.deltaTime;
     }
 }

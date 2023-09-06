@@ -170,6 +170,8 @@ MonoBehaviour:
   minYpos: 1.5
   maxYpos: 4
   maxXpos: 1.5
+  blinkTime: 1
+  blinkRate: 0.12
 --- !u!95 &5991432126418395401
 Animator:
   serializedVersion: 5
