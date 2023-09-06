@@ -6,12 +6,6 @@ public class AndroidInputHandler : MonoBehaviour, IInputHandler
     {
         throw new System.NotImplementedException();
     }
-
-    public void Shoot()
-    {
-        throw new System.NotImplementedException();
-    }
-
     public float VerticalSpeed()
     {
         throw new System.NotImplementedException();

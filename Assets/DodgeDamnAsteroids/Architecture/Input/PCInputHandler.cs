@@ -4,15 +4,25 @@ public class PCInputHandler : MonoBehaviour, IInputHandler
 {
     private Gameplay.Gun gun;
 
+    private KeyCode shootKey = KeyCode.Space;
+    private KeyCode pauseKey = KeyCode.Escape;
+    private bool isPaused = false;
+
     private void Awake()
     {
         gun = FindAnyObjectByType<Gameplay.Gun>();
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(shootKey))
         {
             this.Shoot();
+        }
+
+        if (Input.GetKeyDown(pauseKey))
+        {
+            if (!isPaused) this.PauseGame();
+            else this.UnpauseGame();
         }
     }
     public void Shoot()
@@ -26,5 +36,15 @@ public class PCInputHandler : MonoBehaviour, IInputHandler
     public float VerticalSpeed()
     {
         return Input.GetAxis("Vertical");
+    }
+    private void PauseGame()
+    {
+        PauseMenu.PauseGame();
+        isPaused = true;
+    }
+    private void UnpauseGame()
+    {
+        PauseMenu.UnpauseGame();
+        isPaused = false;
     }
 }

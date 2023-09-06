@@ -15,6 +15,6 @@ public class TestText : MonoBehaviour
     }
     private void ShowInfo()
     {
-        text.text = $"CurrentScore: {(int)Gameplay.ScoreCounter.currentScore}";
+        text.text = $"Score: {(int)Gameplay.ScoreCounter.currentScore}";
     }
 }
