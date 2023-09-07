@@ -6,6 +6,7 @@ public class UFOProjectile : PoolableObject
     private string playerTag = TagStorage.playerTag;
 
     private SpriteRenderer sprite;
+    private Tween tween;
     private float reducedAlpha;
     private float normalAlpha;
     private float alphaCoeff = 0.25f;
@@ -26,6 +27,10 @@ public class UFOProjectile : PoolableObject
             this.gameObject.SetActive(false);
         }
     }
+    private void OnDisable()
+    {
+        tween.Kill();
+    }
     protected override void Update()
     {
         base.Update();
@@ -35,9 +40,9 @@ public class UFOProjectile : PoolableObject
     private void Blink()
     {
         if (sprite.color.a == normalAlpha)
-            sprite.DOFade(reducedAlpha, speed);
+            tween =  sprite.DOFade(reducedAlpha, speed);
 
         if (sprite.color.a == reducedAlpha)
-            sprite.DOFade(normalAlpha, speed);
+            tween = sprite.DOFade(normalAlpha, speed);
     }
 }

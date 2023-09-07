@@ -4,24 +4,28 @@ namespace Gameplay
 { 
     public class Fire : MonoBehaviour
     {
-        [SerializeField] private int fireChance;
+        [SerializeField] private int startFireChance;
+        [SerializeField] private float fireChanceIncreaseStep;
         [SerializeField] private float fireIncreaseSpeed;
         [SerializeField] private float fireDecreaseByExtinguish;
         [SerializeField] private float extingSpeed;
 
         public static bool isOnFire { get; private set; }
         public static float fireLevel { get; private set; }
+
         private int maxFireValue = 100;
         private Player player;
         private string extingTag = TagStorage.extingTag;
         private string asterTag = TagStorage.asterTag;
         private bool isExtinguishing;
         private float newFireLevel;
+        private float fireChance;
 
         private void Awake()
         {
             player = GetComponent<Player>();
             fireLevel = 1;
+            fireChance = startFireChance;
         }
         private void Update()
         {
@@ -79,8 +83,18 @@ namespace Gameplay
             }
             if (collision.CompareTag(asterTag))
             {
-                if (Gameplay.Health.healthValue > 1 && !Gameplay.Health.isInvincible && Random.Range(0, 100) <= fireChance)
-                    isOnFire = true;
+                if (Gameplay.Health.healthValue > 1)
+                {
+                    if (Random.Range(0, 100) <= fireChance)
+                    {
+                        isOnFire = true;
+                        fireChance = startFireChance;
+                    }
+                    else
+                        fireChance += fireChanceIncreaseStep;
+
+                    Debug.Log(fireChance);
+                }
             }
         }
     }

@@ -19,6 +19,6 @@ public class RestartButton : MonoBehaviour
     }
     private void Restart()
     {
-        //Restart
+        SceneDirector.RestartScene();
     }
 }

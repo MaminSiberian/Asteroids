@@ -1,6 +1,5 @@
 using UnityEngine;
 using DG.Tweening;
-using UnityEngine.U2D;
 
 namespace Gameplay
 {
@@ -21,6 +20,7 @@ namespace Gameplay
         private string asterTag = TagStorage.asterTag;
         private string projectileTag = TagStorage.UFOProjectileTag;
 
+        private Tween tween;
         private float reducedAlpha;
         private float normalAlpha;
         private float alphaCoeff = 0.25f;
@@ -29,6 +29,7 @@ namespace Gameplay
         private void Awake()
         {
             player = GetComponent<Player>();
+            isInvincible = false;
 
             normalAlpha = sprite.color.a;
             reducedAlpha = normalAlpha * alphaCoeff;
@@ -36,6 +37,10 @@ namespace Gameplay
             startHealthValue = _startHealthValue;
             maxHealthValue = _maxHealthValue;
             healthValue = startHealthValue;
+        }
+        private void OnDisable()
+        {
+            tween.Kill();
         }
         private void Update()
         {
@@ -78,10 +83,10 @@ namespace Gameplay
         private void Blink()
         {
             if (sprite.color.a == normalAlpha)
-                sprite.DOFade(reducedAlpha, blinkRate);
+                tween = sprite.DOFade(reducedAlpha, blinkRate);
 
             if (sprite.color.a == reducedAlpha)
-                sprite.DOFade(normalAlpha, blinkRate);
+                tween = sprite.DOFade(normalAlpha, blinkRate);
         }
         private void SetInvincibilityTimer()
         {
