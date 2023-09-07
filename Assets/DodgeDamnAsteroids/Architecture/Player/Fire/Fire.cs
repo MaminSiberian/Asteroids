@@ -4,6 +4,7 @@ namespace Gameplay
 { 
     public class Fire : MonoBehaviour
     {
+        [SerializeField] private int fireChance;
         [SerializeField] private float fireIncreaseSpeed;
         [SerializeField] private float fireDecreaseByExtinguish;
         [SerializeField] private float extingSpeed;
@@ -78,7 +79,7 @@ namespace Gameplay
             }
             if (collision.CompareTag(asterTag))
             {
-                if (Gameplay.Health.healthValue > 1)
+                if (Gameplay.Health.healthValue > 1 && !Gameplay.Health.isInvincible && Random.Range(0, 100) <= fireChance)
                     isOnFire = true;
             }
         }

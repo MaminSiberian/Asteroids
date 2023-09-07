@@ -14,7 +14,7 @@ namespace UI
         }
         private void ShowCurrentScore()
         {
-            currentScoreText.text = "Score: " + Gameplay.ScoreCounter.currentScore.ToString();
+            currentScoreText.text = "Score: " + ((int)Gameplay.ScoreCounter.currentScore).ToString();
         }
         private void ShowBestScore()
         {

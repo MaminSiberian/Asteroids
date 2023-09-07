@@ -14,9 +14,9 @@ namespace Gameplay
         public static int startHealthValue { get; private set; }
         public static int maxHealthValue { get; private set; }
         public static int healthValue { get; private set; }
+        public static bool isInvincible { get; private set; }
 
         private Player player;
-        private bool isInvincible;
         private string heartTag = TagStorage.heartTag;
         private string asterTag = TagStorage.asterTag;
         private string projectileTag = TagStorage.UFOProjectileTag;
