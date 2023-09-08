@@ -92,8 +92,6 @@ namespace Gameplay
                     }
                     else
                         fireChance += fireChanceIncreaseStep;
-
-                    Debug.Log(fireChance);
                 }
             }
         }

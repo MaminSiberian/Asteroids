@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResumeButton : MonoBehaviour
+public abstract class ButtonBase : MonoBehaviour
 {
     private Button button;
 
@@ -11,14 +11,11 @@ public class ResumeButton : MonoBehaviour
     }
     private void OnEnable()
     {
-        button.onClick.AddListener(Resume);
+        button.onClick.AddListener(OnButtonClick);
     }
     private void OnDisable()
     {
-        button?.onClick.RemoveListener(Resume);
+        button?.onClick.RemoveListener(OnButtonClick);
     }
-    private void Resume()
-    {
-        PauseMenu.UnpauseGame();
-    }
+    protected abstract void OnButtonClick();
 }
