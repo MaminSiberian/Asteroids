@@ -11,6 +11,7 @@ namespace UI
         private void Update()
         {
             ShowCurrentScore();
+            ShowBestScore();
         }
         private void ShowCurrentScore()
         {
@@ -18,7 +19,7 @@ namespace UI
         }
         private void ShowBestScore()
         {
-
+            bestScoreText.text = "Best: " + Gameplay.ScoreCounter.bestScore.ToString();
         }
     }
 }

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Gameplay
@@ -7,7 +8,7 @@ namespace Gameplay
         [SerializeField] private float scoreIncreaseSpeed;
 
         public static float currentScore { get; private set; }
-        public static float bestScore { get; private set; }
+        public static int bestScore { get; private set; }
 
         private bool playerIsAlive;
 
@@ -15,7 +16,7 @@ namespace Gameplay
         {
             playerIsAlive = true;
             currentScore = 0;
-            //getBestScore
+            LoadBestScore();
         }
         private void OnEnable()
         {
@@ -28,10 +29,32 @@ namespace Gameplay
         private void Update()
         {
             if (playerIsAlive) IncreaseScore();
+
+            if (currentScore > bestScore)
+            {
+                SaveCurrentScore();
+                LoadBestScore();
+            }
         }
         private void IncreaseScore()
         {
             currentScore += scoreIncreaseSpeed * Time.deltaTime;
+        }
+        [Button]
+        private void SaveCurrentScore()
+        {
+            ScoreSaver.SaveScore((int)currentScore);
+        }
+        [Button]
+        private void LoadBestScore()
+        {
+            bestScore = ScoreSaver.LoadScore();
+        }
+        [Button]
+        private void ResetScore()
+        {
+            ScoreSaver.SaveScore(0);
+            bestScore = ScoreSaver.LoadScore();
         }
         private void OnPlayerDeath()
         {

@@ -7,12 +7,15 @@ namespace UI
     public class Fire : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private TextMeshProUGUI alarm;
         [SerializeField] private Image image;
 
         private void Update()
         {
             text.enabled = Gameplay.Fire.isOnFire;
             image.enabled= Gameplay.Fire.isOnFire;
+
+            alarm.enabled = Gameplay.Fire.isOnFire;
 
             ShowFireLevel();
         }

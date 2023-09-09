@@ -8,9 +8,11 @@ namespace UI
     {
         [SerializeField] private Image image;
         [SerializeField] private TextMeshProUGUI text;
+        [SerializeField] private TextMeshProUGUI alarm;
 
         private Animator animator;
         private string refuelAnimName = "Refuel";
+        private int criticalValue = 25;
 
         private void OnEnable()
         {
@@ -27,7 +29,10 @@ namespace UI
         }
         private void ShowFuelLevel()
         {
-            text.text = ((int)Gameplay.Fuel.fuelValue).ToString() + "%";
+            int value = (int)Gameplay.Fuel.fuelValue;
+            text.text = value.ToString() + "%";
+
+            alarm.enabled = value < criticalValue;
         }
         private void OnGetCanister()
         {
