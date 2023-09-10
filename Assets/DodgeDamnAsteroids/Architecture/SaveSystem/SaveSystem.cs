@@ -5,27 +5,38 @@ using Newtonsoft.Json;
 
 public class SaveSystem
 {
-    private const string DATA_KEY = "Data.json";
-
-    public static void SaveToFile(object data)
+    public static void SaveToFile(object data, string key)
     {
-        string path = BuildPath(DATA_KEY);
+        string path = BuildPath(key);
         string json = JsonConvert.SerializeObject(data);
 
-        if (!File.Exists(path)) File.Create(path);
-        
-        File.WriteAllText(path, json);
-
+        using (var fileStream = new StreamWriter(path))
+        {
+            fileStream.Write(json);
+        }
     }
-    public static object LoadFromFile<T>() 
+    public static T LoadFromFile<T>(string key) 
     {
-        string path = BuildPath(DATA_KEY);
+        string path = BuildPath(key);
+        if (!File.Exists(path))
+        {
+            File.Create(path);
+        }
 
-        if (!File.Exists(path)) File.Create(path);
+        using (var fileStream = new StreamReader(path))
+        {
+            var json = fileStream.ReadToEnd();
 
-        var json = File.ReadAllText(path);
-        var data = JsonConvert.DeserializeObject<T>(json);
-        return data;
+            try
+            {
+                var obj = JsonConvert.DeserializeObject<T>(json);
+                return obj;
+            }
+            catch (Exception)
+            {
+                return default(T);
+            }
+        }
     }
     private static string BuildPath(string key)
     {
