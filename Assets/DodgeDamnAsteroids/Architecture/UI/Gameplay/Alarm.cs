@@ -8,6 +8,7 @@ public class Alarm : MonoBehaviour
     private Color white = Color.white;
     private Color red = Color.red;
     private float speed = 1f;
+    private Tween tween;
 
     private void Awake()
     {
@@ -18,9 +19,13 @@ public class Alarm : MonoBehaviour
     private void Update()
     {
         if (text.color == white)
-            text.DOColor(red, speed);
+            tween = text.DOColor(red, speed);
 
         if (text.color == red)
-            text.DOColor(white, speed);
+            tween = text.DOColor(white, speed);
+    }
+    private void OnDisable()
+    {
+        tween.Kill();
     }
 }
