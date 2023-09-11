@@ -7,9 +7,12 @@ namespace Gameplay
     {
         [SerializeField] private int _startHealthValue = 3;
         [SerializeField] private int _maxHealthValue = 6;
+        [Space]
         [SerializeField] private float invincibilityTime;
+        [Space]
         [SerializeField] private SpriteRenderer sprite;
         [SerializeField] private float blinkRate;
+        
         public static int startHealthValue { get; private set; }
         public static int maxHealthValue { get; private set; }
         public static int healthValue { get; private set; }
@@ -77,8 +80,14 @@ namespace Gameplay
             if (collision.CompareTag(heartTag))
                 IncreaseHealth();
             
-            if (collision.CompareTag(asterTag) || collision.CompareTag(projectileTag))
+            if (collision.CompareTag(asterTag))
                 DecreaseHealth();
+
+            if (collision.CompareTag(projectileTag))
+            {
+                SoundsManager.PlayHitSound();
+                DecreaseHealth();
+            }
         }
         private void Blink()
         {
