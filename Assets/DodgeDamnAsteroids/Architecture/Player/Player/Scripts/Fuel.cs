@@ -65,6 +65,7 @@ namespace Gameplay
 
             if (newFuelValue > 100) newFuelValue = 100;
 
+            SoundsManager.PlayRefuelSound();
             isRefueling = true;
         }
         private void OnTriggerEnter2D(Collider2D collision)

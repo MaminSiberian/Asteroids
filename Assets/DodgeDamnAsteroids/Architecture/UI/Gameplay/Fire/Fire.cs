@@ -12,10 +12,11 @@ namespace UI
 
         private void Update()
         {
-            text.enabled = Gameplay.Fire.isOnFire;
-            image.enabled= Gameplay.Fire.isOnFire;
+            bool isOnFire = Gameplay.Fire.isOnFire;
+            text.enabled = isOnFire;
+            image.enabled= isOnFire;
 
-            alarm.enabled = Gameplay.Fire.isOnFire;
+            alarm.enabled = isOnFire;
 
             ShowFireLevel();
         }

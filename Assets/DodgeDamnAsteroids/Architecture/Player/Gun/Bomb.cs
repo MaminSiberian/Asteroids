@@ -4,6 +4,7 @@ public class Bomb : PoolableObject
 {
     [SerializeField] private float minRotationSpeed;
     [SerializeField] private float maxRotationSpeed;
+
     private string asterTag = TagStorage.asterTag;
     private string UFOTag = TagStorage.UFOTag;
     private string explosionTag = TagStorage.explosionTag;

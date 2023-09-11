@@ -93,6 +93,7 @@ namespace Gameplay
             if (timer >= invincibilityTime)
             {
                 isInvincible = false;
+                tween.Kill();
                 timer -= invincibilityTime;
             }
             else

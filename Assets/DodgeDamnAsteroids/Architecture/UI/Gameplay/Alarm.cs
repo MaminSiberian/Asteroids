@@ -15,14 +15,19 @@ public class Alarm : MonoBehaviour
         text = GetComponent<TextMeshProUGUI>();
         text.color = white;
     }
-
     private void Update()
     {
         if (text.color == white)
+        {
+            tween.Kill();
             tween = text.DOColor(red, speed);
+        }
 
         if (text.color == red)
+        {
+            tween.Kill();
             tween = text.DOColor(white, speed);
+        }
     }
     private void OnDisable()
     {

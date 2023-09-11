@@ -9,6 +9,8 @@ namespace Gameplay
         [SerializeField] private float fireIncreaseSpeed;
         [SerializeField] private float fireDecreaseByExtinguish;
         [SerializeField] private float extingSpeed;
+        [SerializeField] private AudioSource fireSound;
+        [SerializeField] private AudioSource extingSound;
 
         public static bool isOnFire { get; private set; }
         public static float fireLevel { get; private set; }
@@ -34,6 +36,7 @@ namespace Gameplay
                 fireLevel = 1;
                 isOnFire = false;
                 isExtinguishing = false;
+                StopPlayerFireSound();
             }
             if (fireLevel >= maxFireValue)
             {
@@ -53,6 +56,7 @@ namespace Gameplay
         public void BurnPlayer()
         {
             fireLevel += fireIncreaseSpeed * Time.deltaTime;
+            PlayPlayerFireSound();
         }
         private void GetExtinguisher()
         {
@@ -64,6 +68,7 @@ namespace Gameplay
             if (newFireLevel < 0) newFireLevel = 0;
 
             isExtinguishing = true;
+            if (!extingSound.isPlaying) extingSound.Play();
         }
         private void Extinguish()
         {
@@ -78,9 +83,8 @@ namespace Gameplay
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.CompareTag(extingTag))
-            {
                 GetExtinguisher();
-            }
+            
             if (collision.CompareTag(asterTag))
             {
                 if (Gameplay.Health.healthValue > 1)
@@ -94,6 +98,16 @@ namespace Gameplay
                         fireChance += fireChanceIncreaseStep;
                 }
             }
+        }
+        private void PlayPlayerFireSound()
+        {
+            if (!fireSound.isPlaying)
+                fireSound.Play();
+        }
+        private void StopPlayerFireSound()
+        {
+            if (fireSound.isPlaying)
+                fireSound.Stop();
         }
     }
 }
