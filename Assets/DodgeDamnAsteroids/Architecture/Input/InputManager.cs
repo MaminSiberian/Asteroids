@@ -4,7 +4,7 @@ using UnityEngine;
 public enum InputType
 {
     PC,
-    Android
+    Touch
 }
 
 public class InputManager : MonoBehaviour
@@ -33,8 +33,8 @@ public class InputManager : MonoBehaviour
             case InputType.PC:
                 inputHandler = this.AddComponent<PCInputHandler>();
                 break;
-            case InputType.Android:
-                inputHandler = this.AddComponent<AndroidInputHandler>();
+            case InputType.Touch:
+                inputHandler = this.AddComponent<TouchInputHandler>();
                 break;
         }
     }
