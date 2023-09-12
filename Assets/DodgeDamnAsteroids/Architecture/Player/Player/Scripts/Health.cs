@@ -74,6 +74,8 @@ namespace Gameplay
 
             if (healthValue <= 0)
                 player.KillPlayer();
+
+            CameraShaker.ShakeCamera();
         }
         private void OnTriggerEnter2D(Collider2D collision)
         {
