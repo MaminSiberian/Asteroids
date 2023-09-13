@@ -11,11 +11,14 @@ namespace Gameplay
 
         public static float fuelValue { get; private set; }
         public static event Action OnGetCanisterEvent;
+
         private int maxFuelValue = 100;
         private Player player;
-        private string canisterTag = TagStorage.canisterTag;
         private bool isRefueling;
         private float newFuelValue;
+
+        private string canisterTag = TagStorage.canisterTag;
+        private string causeOfDeath = "You are out of fuel!";
 
         private void Awake()
         {
@@ -29,7 +32,7 @@ namespace Gameplay
             if (fuelValue <= 0)
             {
                 fuelValue = 0;
-                player.KillPlayer();
+                player.KillPlayer(causeOfDeath);
             }
 
             if (isRefueling)

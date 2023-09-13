@@ -6,7 +6,6 @@ public class ObstacleSpawner : MonoBehaviour
 {
     [SerializeField] private float timeBtwSpawn;
     [SerializeField] private List<Transform> _spawnPositions = new List<Transform>(4);
-    public static List<Transform> spawnPositions { get; private set; }
     [Header("Asteroids")]
     [SerializeField] private int asterStartSpawnChance;
     [SerializeField] private float asterSpawnIncreaseStep;
@@ -20,10 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] private int heartStartSpawnChance;
     [SerializeField] private float heartSpawnIncreaseStep;
 
-    private string asterTag = TagStorage.asterTag;
-    private string canisterTag = TagStorage.canisterTag;
-    private string extingTag = TagStorage.extingTag;
-    private string heartTag = TagStorage.heartTag;
+    public static List<Transform> spawnPositions { get; private set; }
 
     private float asterSpawnChance; 
     private float canisterSpawnChance;
@@ -33,6 +29,14 @@ public class ObstacleSpawner : MonoBehaviour
     private float timer = 0f;
     private int maxSpawnChance = 90;
 
+    #region STRING_PARAMS
+    private string asterTag = TagStorage.asterTag;
+    private string canisterTag = TagStorage.canisterTag;
+    private string extingTag = TagStorage.extingTag;
+    private string heartTag = TagStorage.heartTag;
+    #endregion
+
+    #region MONOBEHS
     private void Awake()
     {
         spawnPositions = _spawnPositions;
@@ -46,6 +50,9 @@ public class ObstacleSpawner : MonoBehaviour
     {
         SetSpawnTimer();
     }
+    #endregion
+
+    #region GENERAL_SPAWN_LOGIC
     private void SetSpawnTimer()
     {
         if (timer >= timeBtwSpawn)
@@ -103,6 +110,9 @@ public class ObstacleSpawner : MonoBehaviour
         if (heartSpawnChance <= maxSpawnChance) 
             heartSpawnChance += heartSpawnIncreaseStep;
     }
+    #endregion
+
+    #region SPAWN_METHODS_FOR_OBJECTS
     private void SpawnAsteroids()
     {
         GetRandomPositions(Random.Range(0, 4)).ForEach(p => SpawnObject(asterTag, p));
@@ -127,4 +137,5 @@ public class ObstacleSpawner : MonoBehaviour
         IncreaseSpawnChances();
         heartSpawnChance = heartStartSpawnChance;
     }
+    #endregion
 }

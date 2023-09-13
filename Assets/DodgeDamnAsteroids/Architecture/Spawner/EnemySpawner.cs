@@ -7,11 +7,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int addEnemyStartSpawnChance;
     [SerializeField] private int addSpawnChanceStep;
 
-    private string UFOTag = TagStorage.UFOTag;
     private int addEnemySpawnChance;
     private float timeBtwSpawn;
     private float timer = 0f;
 
+    private string UFOTag = TagStorage.UFOTag;
+
+    #region MONOBEHS
     private void OnEnable()
     {
         Player.OnPlayerDeathEvent += OnPlayerDeath;
@@ -25,6 +27,8 @@ public class EnemySpawner : MonoBehaviour
     {
         SetSpawnTimer();
     }
+    #endregion
+
     private void SetSpawnTimer()
     {
         if (timer >= timeBtwSpawn)

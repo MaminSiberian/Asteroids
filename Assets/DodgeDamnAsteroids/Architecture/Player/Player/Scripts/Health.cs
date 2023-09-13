@@ -19,16 +19,25 @@ namespace Gameplay
         public static bool isInvincible { get; private set; }
 
         private Player player;
-        private string heartTag = TagStorage.heartTag;
-        private string asterTag = TagStorage.asterTag;
-        private string projectileTag = TagStorage.UFOProjectileTag;
 
+        #region BLINK_PARAMS
         private Tween tween;
         private float reducedAlpha;
         private float normalAlpha;
         private float alphaCoeff = 0.25f;
         private float timer = 0f;
+        #endregion
 
+        #region STRING_PARAMS
+        private string heartTag = TagStorage.heartTag;
+        private string asterTag = TagStorage.asterTag;
+        private string projectileTag = TagStorage.UFOProjectileTag;
+        private string causeOfDeath;
+        private string killedByAsteroid = "You crashed into asteroid!";
+        private string killedByUFO = "You were shot by UFO!";
+        #endregion
+
+        #region MONOBEHS
         private void Awake()
         {
             player = GetComponent<Player>();
@@ -55,6 +64,27 @@ namespace Gameplay
             else
                 ReturnToNormalAlpha();
         }
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.CompareTag(heartTag))
+                IncreaseHealth();
+            
+            if (collision.CompareTag(asterTag))
+            {
+                causeOfDeath = killedByAsteroid;
+                DecreaseHealth();
+            }
+
+            if (collision.CompareTag(projectileTag))
+            {
+                causeOfDeath = killedByUFO;
+                SoundsManager.PlayHitSound();
+                DecreaseHealth();
+            }
+        }
+        #endregion
+
+        #region HEALTH
         public void IncreaseHealth()
         {
             if (healthValue < maxHealthValue)
@@ -73,24 +103,13 @@ namespace Gameplay
                 return;
 
             if (healthValue <= 0)
-                player.KillPlayer();
+                player.KillPlayer(causeOfDeath);
 
             CameraShaker.ShakeCamera();
         }
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (collision.CompareTag(heartTag))
-                IncreaseHealth();
-            
-            if (collision.CompareTag(asterTag))
-                DecreaseHealth();
+        #endregion
 
-            if (collision.CompareTag(projectileTag))
-            {
-                SoundsManager.PlayHitSound();
-                DecreaseHealth();
-            }
-        }
+        #region INVICIBILITY
         private void Blink()
         {
             if (sprite.color.a == normalAlpha)
@@ -116,5 +135,6 @@ namespace Gameplay
             color.a = normalAlpha;
             sprite.color = color;
         }
+        #endregion
     }
 }

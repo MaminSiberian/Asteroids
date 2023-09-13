@@ -14,11 +14,13 @@ public class TouchInput : MonoBehaviour
     {
         PauseMenu.OnPauseActivatedEvent += TurnOffInput;
         PauseMenu.OnPauseDeactivatedEvent += TurnOnInput;
+        Player.OnPlayerDeathEvent += TurnOffInput;
     }
     private void OnDisable()
     {
         PauseMenu.OnPauseActivatedEvent -= TurnOffInput;
         PauseMenu.OnPauseDeactivatedEvent -= TurnOnInput;
+        Player.OnPlayerDeathEvent -= TurnOffInput;
     }
     private void Start()
     {

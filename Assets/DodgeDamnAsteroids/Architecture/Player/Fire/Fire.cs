@@ -18,11 +18,13 @@ namespace Gameplay
 
         private int maxFireValue = 100;
         private Player player;
-        private string extingTag = TagStorage.extingTag;
-        private string asterTag = TagStorage.asterTag;
         private bool isExtinguishing;
         private float newFireLevel;
         private float fireChance;
+
+        private string extingTag = TagStorage.extingTag;
+        private string asterTag = TagStorage.asterTag;
+        private string causeOfDeath = "You burned out!";
 
         #region MONOBEHS
         private void Awake()
@@ -54,7 +56,7 @@ namespace Gameplay
             {
                 fireLevel = maxFireValue;
                 isOnFire = false;
-                player.KillPlayer();
+                player.KillPlayer(causeOfDeath);
             }
 
             if (isExtinguishing)
