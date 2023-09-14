@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using DG.Tweening;
 
 public class Background : MonoBehaviour
 {
@@ -19,6 +18,14 @@ public class Background : MonoBehaviour
         minY = -height;
         
         CreateBackground();
+    }
+    private void OnEnable()
+    {
+        Player.OnPlayerDeathEvent += TurnOff;
+    }
+    private void OnDisable()
+    {
+        Player.OnPlayerDeathEvent -= TurnOff;
     }
     private void Update()
     {
@@ -46,5 +53,9 @@ public class Background : MonoBehaviour
             obj.position = new Vector3(obj.position.x, maxY, obj.position.z);
 
         obj.position += Vector3.down * speed * Time.deltaTime;
+    }
+    private void TurnOff()
+    {
+        this.enabled = false;
     }
 }
