@@ -30,6 +30,7 @@ namespace Gameplay
         private void Awake()
         {
             player = GetComponent<Player>();
+            isOnFire = false;
             fireLevel = 1;
             fireChance = startFireChance;
         }
